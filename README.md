@@ -1,6 +1,4 @@
-## Installation
-
-Installation of prerequisites
+## Installation of prerequisites
 
 ### Windows
 
@@ -20,6 +18,22 @@ pip install websockets pyaudio vosk
 brew install portaudio ffmpeg
 
 pip install websockets pyaudio vosk
+```
+
+## Download models
+
+To download models manually go here https://alphacephei.com/vosk/models.  
+
+To download through terminal run these commands:
+
+```bash
+# download archive
+curl -L \
+https://alphacephei.com/vosk/models/vosk-model-en-us-daanzu-20200905.zip > \
+vosk-model-en-us-daanzu-20200905.zip
+
+unzip vosk-model-en-us-daanzu-20200905.zip
+rm vosk-model-en-us-daanzu-20200905.zip
 ```
 
 ## Vosk Speech recognition trial
