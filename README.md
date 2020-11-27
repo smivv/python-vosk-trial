@@ -27,13 +27,17 @@ To download models manually go here https://alphacephei.com/vosk/models.
 To download through terminal run these commands:
 
 ```bash
-# download archive
-curl -L \
-https://alphacephei.com/vosk/models/vosk-model-en-us-daanzu-20200905.zip > \
-vosk-model-en-us-daanzu-20200905.zip
+# create models directory
+mkdir models && cd models
 
-unzip vosk-model-en-us-daanzu-20200905.zip
-rm vosk-model-en-us-daanzu-20200905.zip
+# download archive with light model
+curl -L \
+https://alphacephei.com/vosk/models/vosk-model-en-us-daanzu-20200905-lgraph.zip > \
+vosk-model-en-us-daanzu-20200905-lgraph.zip
+
+# unarchive and delete redundant
+unzip vosk-model-en-us-daanzu-20200905-lgraph.zip
+rm vosk-model-en-us-daanzu-20200905-lgraph.zip
 ```
 
 ## Vosk Speech recognition trial
@@ -44,8 +48,21 @@ rm vosk-model-en-us-daanzu-20200905.zip
 # to test with microphone
 python test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH
 
-# or to test with file
+# to test with file
 python test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH --filepath=FILE_PATH
+```
+
+#### Example
+
+```bash
+# to test with microphone
+python test.py --sample-rate=16000 \
+--model=models/vosk-model-en-us-daanzu-20200905-lgraph
+
+# to test with file
+python test.py --sample-rate=16000 \
+--model=models/vosk-model-en-us-daanzu-20200905-lgraph \
+--filepath=wavs/test16k.wav
 ```
 
 ### Websockets service/client
@@ -57,8 +74,24 @@ python service.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --model=MODEL_PA
 # to test with microphone
 python client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT
 
-# or to test with file
+# to test with file
 python client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --filepath=FILE_PATH
+```
+
+#### Example
+
+```bash
+# to start service
+python service.py --sample-rate=16000 \
+--ip=0.0.0.0 --port=2700 \
+--model=models/vosk-model-en-us-daanzu-20200905-lgraph
+
+# to test with microphone
+python client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700
+
+# to test with file
+python client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700 \
+--filepath=wavs/test16k.wav
 ```
 
 ## About
