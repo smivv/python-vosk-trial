@@ -1,4 +1,8 @@
+# Vosk Speech Recognition API
+
 ## Installation of prerequisites
+
+Tested with python3 only, works like a charm without GPU :)
 
 ### Windows
 
