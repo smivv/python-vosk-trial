@@ -56,7 +56,7 @@ class Server:
 
         self.loop = asyncio.get_event_loop()
 
-        start_server = websockets.initialize(
+        start_server = websockets.serve(
             self._recognize,
             self.ip,
             self.port
@@ -136,5 +136,5 @@ if __name__ == "__main__":
         sample_rate=args.sample_rate,
         ip=args.ip,
         port=args.port,
-        gpu=args.use_gpu
+        gpu=args.gpu
     ).serve()

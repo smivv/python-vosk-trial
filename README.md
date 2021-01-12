@@ -11,17 +11,19 @@ Remove Windows and install Linux ;)
 ### Ubuntu
 
 ```bash
+sudo apt-get update
 sudo apt-get install libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0
-sudo apt-get install ffmpeg libav-tools
+sudo apt-get install unzip ffmpeg libav-tools python3-pip
 
-pip install websockets pyaudio vosk
+sudo pip3 install websockets pyaudio vosk
 ```
 ### Mac os
 
 ```bash
+brew update
 brew install portaudio ffmpeg
 
-pip install websockets pyaudio vosk
+sudo pip3 install websockets pyaudio vosk
 ```
 
 ## Download models
@@ -50,21 +52,21 @@ rm vosk-model-en-us-daanzu-20200905-lgraph.zip
 
 ```bash
 # to test with microphone
-python test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH
+python3 test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH
 
 # to test with file
-python test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH --filepath=FILE_PATH
+python3 test.py --sample-rate=SAMPLE_RATE --model=MODEL_PATH --filepath=FILE_PATH
 ```
 
 #### Example
 
 ```bash
 # to test with microphone
-python test.py --sample-rate=16000 \
+python3 test.py --sample-rate=16000 \
 --model=models/vosk-model-en-us-daanzu-20200905-lgraph
 
 # to test with file
-python test.py --sample-rate=16000 \
+python3 test.py --sample-rate=16000 \
 --model=models/vosk-model-en-us-daanzu-20200905-lgraph \
 --filepath=wavs/test16k.wav
 ```
@@ -73,28 +75,28 @@ python test.py --sample-rate=16000 \
 
 ```bash
 # to start service
-python service.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --model=MODEL_PATH
+python3 service.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --model=MODEL_PATH
 
 # to test with microphone
-python client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT
+python3 client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT
 
 # to test with file
-python client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --filepath=FILE_PATH
+python3 client.py --sample-rate=SAMPLE_RATE --ip=IP --port=PORT --filepath=FILE_PATH
 ```
 
 #### Example
 
 ```bash
 # to start service
-python service.py --sample-rate=16000 \
+python3 service.py --sample-rate=16000 \
 --ip=0.0.0.0 --port=2700 \
 --model=models/vosk-model-en-us-daanzu-20200905-lgraph
 
 # to test with microphone
-python client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700
+python3 client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700
 
 # to test with file
-python client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700 \
+python3 client.py --sample-rate=16000 --ip=0.0.0.0 --port=2700 \
 --filepath=wavs/test16k.wav
 ```
 
